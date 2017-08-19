@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_ants_nb.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/19 10:59:01 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/19 12:32:15 by jlereffa         ###   ########.fr       */
+/*   Created: 2017/08/19 16:31:46 by jlereffa          #+#    #+#             */
+/*   Updated: 2017/08/19 16:32:03 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lem_in.h>
 
-int	main(void)
+int	check_ants_nb(t_lem_in_var *v, char *s)
 {
-	t_lem_in_var	v;
-	t_lem_in_file	*file;
+	char	*ptr;
 
-	init_t_lem_in_var(&v);
-	if (!(file = stock_content()))
-		return (handle_error());
-	if (!parse_content(&v, file))
-		return (handle_error());
-	return (0);
+	ptr = s;
+	while (*ptr)
+	{
+		if (!(*ptr >= '0' && *ptr <= '9'))
+			return (0);
+		ptr++;
+	}
+	v->ants_nb = ft_atoi(s);
+	if (!v->ants_nb)
+		return (0);
+	return (1);
 }

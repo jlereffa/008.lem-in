@@ -1,10 +1,19 @@
-3
-##start
-1 23 3
-2 16 7
-#commentaire
-3 16 3 4 16 5 593 615 748
-##end 095 0-4 0-6 1-3 4-3
+3 <-[OK] Has to be a nb
+##start <-[] Doesn't have to be at the beginning, but has to be there.
+1 23 3 <-[] Has to follow ##start command, has to be correct.
+2 16 7 <-[] Can't have two ants called the exact same.
+#commentaire <-[OK] Has to be ignored.
+3 16 3
+4 16 5
+5 9 3
+6 1 5
+7 4 8
+##end<-[] Doesn't have to be at the end, but has to be there.
+0 9 5<- [] Has to follow ##end, has to be correct.
+0-4 <- Has to be that exact way
+0-6	<- Can't have any double
+1-3	<- The exit has to be connected.
+4-3	<- The start has to be connected.
 5-2
 3-5
 #autre commentaire

@@ -6,14 +6,14 @@
 #    By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/26 13:43:21 by jlereffa          #+#    #+#              #
-#    Updated: 2017/08/19 11:55:45 by jlereffa         ###   ########.fr        #
+#    Updated: 2017/08/19 16:32:12 by jlereffa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ##PROJECT
 NAME = lem-in
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -O2
 
 ##DIRECTORIES
 SRC_PATH = srcs/
@@ -24,7 +24,8 @@ LIBFT_PATH = libft/
 
 ##FILES
 SRC_NAME =	main.c handle_error.c rewind_t_lem_in_file.c set_t_lem_in_file.c\
-			stock_content.c
+			stock_content.c debug.c parse_content.c init_t_lem_in_var.c\
+			check_if_str_strictly_identical.c check_ants_nb.c
 
 
 

@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/19 10:59:01 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/19 12:32:15 by jlereffa         ###   ########.fr       */
+/*   Created: 2017/07/31 17:29:41 by jlereffa          #+#    #+#             */
+/*   Updated: 2017/08/19 12:05:03 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lem_in.h>
 
-int	main(void)
+void	debug(char *file, int line)
 {
-	t_lem_in_var	v;
-	t_lem_in_file	*file;
-
-	init_t_lem_in_var(&v);
-	if (!(file = stock_content()))
-		return (handle_error());
-	if (!parse_content(&v, file))
-		return (handle_error());
-	return (0);
+	ft_putstr_fd("\033[1;31mFILE : {\033[1;33m", 1);
+	ft_putstr_fd(file, 1);
+	ft_putstr_fd("\033[1;31m} | LINE : {\033[1;33m", 1);
+	ft_putnbr_fd(line, 1);
+	ft_putstr_fd("\033[1;31m}\n\033[0m", 1);
 }
