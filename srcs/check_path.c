@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_ants_nb.c                                    :+:      :+:    :+:   */
+/*   check_path.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/19 16:31:46 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/19 18:58:04 by jlereffa         ###   ########.fr       */
+/*   Created: 2017/08/19 18:49:32 by jlereffa          #+#    #+#             */
+/*   Updated: 2017/08/19 18:49:48 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lem_in.h>
 
-int	check_ants_nb(t_lem_in_var *v, char *s)
+int	check_path(char *s)
 {
-	char	*ptr;
-
-	ptr = s;
-	if (!s || !*s)
+	if (!s || !*s || !(*s >= '0' && *s <= '9'))
 		return (0);
-	while (*ptr)
-	{
-		if (!(*ptr >= '0' && *ptr <= '9'))
-			return (0);
-		ptr++;
-	}
-	v->ants_nb = ft_atoi(s);
-	if (!v->ants_nb)
+	while (*s && *s >= '0' && *s <= '9')
+		s++;
+	if (!*s || *s != '-')
 		return (0);
-	ft_putendl(s);
+	s++;
+	if (!*s || !(*s >= '0' && *s <= '9'))
+		return (0);
+	while (*s && *s >= '0' && *s <= '9')
+		s++;
+	if (*s)
+		return (0);
 	return (1);
 }

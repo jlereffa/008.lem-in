@@ -6,13 +6,11 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 12:09:30 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/19 18:40:52 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/19 19:01:29 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lem_in.h>
-
-int	check
 
 int	parse_content(t_lem_in_var *v, t_lem_in_file *file)
 {
@@ -20,10 +18,8 @@ int	parse_content(t_lem_in_var *v, t_lem_in_file *file)
 	int	ret2;
 
 	ret = 0;
-	if (!check_ants_nb(v, file->line))
+	if (!check_ants_nb(v, file->line) || !(file = file->next))
 		return (0);
-	ft_putendl(file->line);
-	file = file->next;
 	while (file)
 	{
 		if (!file->line || !*(file)->line || *(file)->line == '#' &&
@@ -36,10 +32,8 @@ int	parse_content(t_lem_in_var *v, t_lem_in_file *file)
 				return (0);
 			else if (ret && ret > ret2 = check_if_room_or_path(file->line))
 				return (0);
-			if (ret2 == 1)
-				v->has_room = 1;
-			else if (ret2 == 2)
-				v->has_path = 1;
+			v->has_room = ret2 == 1 ? 1 : v->has_room;
+			v->has_path = ret2 == 2 ? 1 : v->has_path;
 		}
 		file = file->next;
 	}

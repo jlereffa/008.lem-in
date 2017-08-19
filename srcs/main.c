@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 10:59:01 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/19 17:53:36 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/19 19:05:34 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int	main(void)
 	init_t_lem_in_var(&v);
 	if (!(file = stock_content()))
 		return (handle_error());
-	if (!parse_content(&v, file) && !estimate_if_doable(&v, file))
+	if (!parse_content_light(&v, file) || !estimate_if_doable(&v, file) ||
+		!parse_content_in_depth(&v, file))
 		return (handle_error());
 	return (0);
 }
