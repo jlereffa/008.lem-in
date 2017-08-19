@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 12:09:30 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/19 16:34:01 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/19 16:34:34 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	parse_content(t_lem_in_var *v, t_lem_in_file *file)
 	file = file->next;
 	while (file)
 	{
-		if (*(file)->line == '#' && !check_command(t_lem_in_file *file))
+		if (*(file)->line == '#' && !check_command(file))
 			return (0);
 		else
 	}
