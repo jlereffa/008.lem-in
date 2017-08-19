@@ -6,7 +6,7 @@
 #    By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/26 13:43:21 by jlereffa          #+#    #+#              #
-#    Updated: 2017/08/19 10:53:56 by jlereffa         ###   ########.fr        #
+#    Updated: 2017/08/19 11:55:45 by jlereffa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ INC_LIBFT_PATH = libft/includes/
 LIBFT_PATH = libft/
 
 ##FILES
-SRC_NAME =	main.c
+SRC_NAME =	main.c handle_error.c rewind_t_lem_in_file.c set_t_lem_in_file.c\
+			stock_content.c
 
 
 
@@ -46,7 +47,7 @@ all: $(NAME)
 
 $(NAME): libft $(OBJ)
 	@$(CC) $(LIBFT) $(LIB_NAME) -o $@ $(OBJ)
-	@echo "\n\033[1;34m [$(NAME)] %.o\t\t\t\033[1;32m[Created]\033[0m"
+	@echo "\n\033[1;34m [$(NAME)] %.o\t\t\033[1;32m[Created]\033[0m"
 	@echo "\033[1;34m [$(NAME)] $(NAME)\t\033[1;32m[Created]\033[0m"
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c $(HEADER) $(HEADER_LIB)

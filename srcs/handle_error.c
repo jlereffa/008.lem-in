@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   handle_error.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/19 10:59:01 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/19 11:24:14 by jlereffa         ###   ########.fr       */
+/*   Created: 2017/08/19 11:18:00 by jlereffa          #+#    #+#             */
+/*   Updated: 2017/08/19 11:49:51 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lem_in.h>
 
-int	main(void)
+int	handle_error(void)
 {
-	t_lem_in_file	*file;
-
-	if (!(file = stock_content()))
-		return (handle_error());
+	write(1, "ERROR\n", 6);
+	return (0);
 }
