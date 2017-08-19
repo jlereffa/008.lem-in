@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_command.c                                    :+:      :+:    :+:   */
+/*   check_commands_and_comments.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 16:33:11 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/19 16:33:26 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/19 18:13:44 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lem_in.h>
 
-void	check_command(t_lem_in_var *v, t_lem_in_file *file)
+int	check_commands_and_comments(t_lem_in_var *v, t_lem_in_file *file)
 {
 	if (check_if_str_strictly_identical(file->line, "##start"))
 	{
-		//check line->next, has to be a correct room.
-		if (!)
+		if (!file->next || !file->next->line || !check_room(file->next->line))
 			return (0);
 		v->stated_start = 1;
+		ft_putendl(file->line);
 	}
 	else if (check_if_str_strictly_identical(file->line, "##end"))
 	{
-		//check line->next, has to be a correct room.
-		if (!)
+		if (!file->next || !file->next->line || !check_room(file->next->line))
 			return (0);
 		v->stated_end = 1;
+		ft_putendl(file->line);
 	}
+	else if ((*file)->line + 1 && ((*file)->line + 1 != '#')
+		ft_putendl(file->line);
+	else if ((*file)->line + 1 && (*file)->line + 2 &&
+			(*file)->line + 1 == '#' && (*file)->line + 2 == '#')
+		ft_putendl(file->line);
+	return (1);
 }

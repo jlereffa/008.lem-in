@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_room.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/19 10:59:01 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/19 17:53:36 by jlereffa         ###   ########.fr       */
+/*   Created: 2017/08/19 17:33:54 by jlereffa          #+#    #+#             */
+/*   Updated: 2017/08/19 17:34:08 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lem_in.h>
 
-int	main(void)
+int	check_room(char *s)
 {
-	t_lem_in_var	v;
-	t_lem_in_file	*file;
-
-	init_t_lem_in_var(&v);
-	if (!(file = stock_content()))
-		return (handle_error());
-	if (!parse_content(&v, file) && !estimate_if_doable(&v, file))
-		return (handle_error());
+	if (!*s || *s == '#' || *s == 'L' || *s < 32 || *s > 126)
+		return (0);
+	while (*s && *s >= 32 && *s <= 126 && *s != ' ')
+		s++;
+	if (*s != ' ')
+		return (0);
+	s++;
+	if (!(*s >= '0' && *s <= '9'))
+		return (0);
+	while (*s && *s >= '0' && *s <= '9')
+		s++;
+	if (*s != ' ')
+		return (0);
+	s++;
+	if (!(*s >= '0' && *s <= '9'))
+		return (0);
+	while (*s && *s >= '0' && *s <= '9')
+		s++;
+	if (*s)
+		return (1);
 	return (0);
 }
