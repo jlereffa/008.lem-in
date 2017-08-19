@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_content.c                                    :+:      :+:    :+:   */
+/*   parse_content_light.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 12:09:30 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/19 19:01:29 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/19 19:10:32 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lem_in.h>
 
-int	parse_content(t_lem_in_var *v, t_lem_in_file *file)
+int	parse_content_light(t_lem_in_var *v, t_lem_in_file *file)
 {
 	int	ret;
 	int	ret2;

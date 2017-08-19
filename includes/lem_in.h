@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 10:52:52 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/19 18:40:22 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/19 19:07:24 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int					check_if_str_strictly_identical(char *s1, char *s2);
 int					check_if_room_or_path(char *s);
 int					check_room(char *s);
 int					check_path(char *s);
+int					estimate_if_doable(t_lem_in_var *v);
 
 /*
 **	Linked lists manipulation functions
