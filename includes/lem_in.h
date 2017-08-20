@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 10:52:52 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/19 20:36:43 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/20 15:14:02 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,12 @@ int					parse_content(t_lem_in_var *v, t_lem_in_file *file);
 int					check_ants_nb(t_lem_in_var *v, char *s);
 int					check_commands_and_comments(
 					t_lem_in_var *v, t_lem_in_file *file);
-int					check_if_str_strictly_identical(char *s1, char *s2);
+int					check_if_str_identical(char *s1, char *s2);
 int					check_if_room_or_path(char *s);
 int					check_room(char *s);
 int					check_path(char *s);
 int					estimate_if_doable(t_lem_in_var *v);
+
 
 /*
 **	Linked lists manipulation functions
@@ -88,10 +89,24 @@ int					estimate_if_doable(t_lem_in_var *v);
 void				init_t_lem_in_var(t_lem_in_var *v);
 t_lem_in_file		*set_t_lem_in_file(t_lem_in_file *file, char *ptr);
 int					rewind_t_lem_in_file(t_lem_in_file **file);
+t_lem_in_room		*set_t_lem_in_room(
+					t_lem_in_room *room, char *line, int is_start, int is_end);
+int					rewind_t_lem_in_room(t_lem_in_room **room);
+t_lem_in_path		*set_t_lem_in_path(t_lem_in_room *room, t_lem_in_path *path,
+					char *target_room);
+int					rewind_t_lem_in_path(t_lem_in_path **path);
+
+/*
+**	Core functions
+*/
+
+int					format_content_into_lst(t_lem_in_file *file);
+int					add_path_to_room(t_lem_in_room *room, char *line);
+
 /*
 **	Error handling functions
 */
 
-int					handle_error(void);
+int					handle_error();
 
 #endif

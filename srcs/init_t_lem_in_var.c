@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 12:12:54 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/19 20:25:16 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/20 12:31:20 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	init_t_lem_in_var(t_lem_in_var *v)
 {
 	v->ants_nb = 0;
-	v->start_stated = 0;
-	v->end_stated = 0;
+	v->stated_start = 0;
+	v->stated_end = 0;
 	v->has_room = 0;
 	v->has_path = 0;
 }

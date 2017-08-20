@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 12:09:30 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/19 19:10:32 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/20 13:41:37 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	parse_content_light(t_lem_in_var *v, t_lem_in_file *file)
 			if (!ret && !(ret = check_if_room_or_path(file->line) &&
 				!(ret2 = ret)))
 				return (0);
-			else if (ret && ret > ret2 = check_if_room_or_path(file->line))
+			else if (ret && ret > (ret2 = check_if_room_or_path(file->line)))
 				return (0);
 			v->has_room = ret2 == 1 ? 1 : v->has_room;
 			v->has_path = ret2 == 2 ? 1 : v->has_path;
