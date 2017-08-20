@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   rewind_t_lem_in_room.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/19 10:59:01 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/20 16:33:58 by jlereffa         ###   ########.fr       */
+/*   Created: 2017/08/11 10:31:31 by jlereffa          #+#    #+#             */
+/*   Updated: 2017/08/20 16:41:49 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lem_in.h>
 
-int	main(void)
+int	rewind_t_lem_in_room(t_lem_in_room **room)
 {
-	t_lem_in_var	v;
-	t_lem_in_file	*file;
-	t_lem_in_room	*room;
-
-	init_t_lem_in_var(&v);
-	if (!(file = stock_content()))
-		return (handle_error());
-	if (!parse_content_light(&v, file) || (!estimate_if_doable(&v)))
-		return (handle_error());
-	if (!(room = format_content_into_lst(file)))
-		return (handle_error());
-	if (!parse_content_in_depth(room))
-		return (handle_error());
-	return (0);
+	if (!room || !*room)
+		return (0);
+	while ((*room)->prev)
+		*room = (*room)->prev;
+	return (1);
 }

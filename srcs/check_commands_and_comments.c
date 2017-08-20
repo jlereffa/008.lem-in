@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 16:33:11 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/20 14:35:09 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/20 16:29:32 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int	check_commands_and_comments(t_lem_in_var *v, t_lem_in_file *file)
 		v->stated_end = 1;
 		ft_putendl(file->line);
 	}
-	else if ((*file)->line + 1 && ((*file)->line + 1 != '#' ||
-			((*file)->line + 2 && (*file)->line + 1 == '#' &&
-			(*file)->line + 2 == '#')))
+	else if (*(file)->line + 1 && (*(file)->line + 1 != '#' ||
+			(*(file)->line + 2 && *(file)->line + 1 == '#' &&
+			*(file)->line + 2 == '#')))
 		ft_putendl(file->line);
 	return (1);
 }

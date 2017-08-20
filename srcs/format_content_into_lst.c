@@ -6,13 +6,13 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 19:18:36 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/20 15:02:35 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/20 16:35:13 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lem_in.h>
 
-int	format_content_into_lst(t_lem_in_file *file)
+t_lem_in_room	*format_content_into_lst(t_lem_in_file *file)
 {
 	t_lem_in_room	*room;
 
@@ -41,9 +41,9 @@ int	format_content_into_lst(t_lem_in_file *file)
 		else if (check_path(file->line))
 		{
 			if (!(add_path_to_room(room, file->line)))
-				return (0)
+				return (0);
 		}
 		file = file->next;
 	}
-	return (1);
+	return (room);
 }

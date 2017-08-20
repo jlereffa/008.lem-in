@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 12:09:30 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/20 13:41:37 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/20 16:40:55 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	parse_content_light(t_lem_in_var *v, t_lem_in_file *file)
 		return (0);
 	while (file)
 	{
-		if (!file->line || !*(file)->line || *(file)->line == '#' &&
-			!check_command_and_comments(v, file))
+		if (!file->line || !*(file)->line || (*(file)->line == '#' &&
+			!check_commands_and_comments(v, file)))
 			return (0);
 		else
 		{

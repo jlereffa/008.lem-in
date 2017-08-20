@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 12:41:28 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/20 14:34:41 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/20 16:27:38 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ int	check_if_str_identical(char *s1, char *s2)
 		s2++;
 	}
 	if (*s1 || *s2)
-		return (0)
+		return (0);
 	return (1);
 }

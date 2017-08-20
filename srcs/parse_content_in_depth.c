@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 19:09:43 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/20 15:45:28 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/20 16:33:32 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,11 @@ static int	check_if_room_has_double(t_lem_in_room *room)
 		room = room->prev;
 	while (room)
 	{
-		if (check_if_str_identical(name, room->name))
-			found++;
+		if (check_if_str_identical(name, room->name) && (found += 1) &&
+			found > 1)
+			return (0);
 		room = room->next;
 	}
-	if (found > 1)
-		return (0);
 	return (1);
 }
 
@@ -45,12 +44,11 @@ static int	check_if_room_has_same_coord(t_lem_in_room *room)
 		room = room->prev;
 	while (room)
 	{
-		if (coord_x == room->coord_x && coord_y == room->coord_y)
-			found++;
+		if (coord_x == room->coord_x && coord_y == room->coord_y &&
+			(found += 1) && found > 1)
+			return (0);
 		room = room->next;
 	}
-	if (found > 1)
-		return (0);
 	return (1);
 }
 
@@ -62,21 +60,24 @@ static int	check_if_room_path_has_double(t_lem_in_path *path)
 
 	while (path)
 	{
-		name = path->name;
+		name = path->room->name;
 		found = 0;
 		tmp = path;
 		while (tmp->prev)
 			tmp = tmp->prev;
 		while (tmp)
 		{
-			if (check_if_str_identical(name, tmp->name)
+			if (check_if_str_identical(name, tmp->room->name) && (found += 1) &&
+				found > 1)
+				return (0);
 			tmp = tmp->next;
 		}
-
+		path = path->next;
 	}
+	return (1);
 }
 
-int			parse_content_in_depth(t_lem_in_var *v, t_lem_in_room *rooms)
+int			parse_content_in_depth(t_lem_in_room *room)
 {
 	int	start_nb;
 	int	end_nb;
@@ -87,8 +88,8 @@ int			parse_content_in_depth(t_lem_in_var *v, t_lem_in_room *rooms)
 		return (0);
 	while (room)
 	{
-		if (room->stated_start && start_nb += 1 && start_nb > 1 ||
-			room->stated_end && end_nb += 1 && end_nb > 1)
+		if ((room->is_start && (start_nb += 1) && start_nb > 1) ||
+			(room->is_end && (end_nb += 1) && end_nb > 1))
 			return (0);
 		if (!rewind_t_lem_in_path(&room->path))
 			return (0);
@@ -98,7 +99,7 @@ int			parse_content_in_depth(t_lem_in_var *v, t_lem_in_room *rooms)
 			return (0);
 		if (!check_if_room_path_has_double(room->path))
 			return (0);
-		if ((room->stated_start || room->stated_end) && !room->path)
+		if ((room->is_start || room->is_end) && !room->path)
 			return (0);
 		room = room->next;
 	}

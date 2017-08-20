@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/20 14:03:06 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/20 14:03:24 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/20 16:35:34 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static char		*get_name_from_line(char *line)
 	i = 0;
 	while (line[i] != ' ')
 		i++;
-	if (name = (char*)malloc(sizeof(char) * i + 1))
+	if (!(name = (char*)malloc(sizeof(char) * i + 1)))
 		return (0);
 	i = 0;
 	while (line[i] != ' ')
