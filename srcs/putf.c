@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_if_room_or_path.c                            :+:      :+:    :+:   */
+/*   putf.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/19 18:38:59 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/20 16:58:22 by jlereffa         ###   ########.fr       */
+/*   Created: 2017/08/10 20:08:43 by jlereffa          #+#    #+#             */
+/*   Updated: 2017/08/20 16:58:30 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lem_in.h>
 
-int	check_if_room_or_path(char *s)
+void	putf(char *s, char *n)
 {
-	DEB
-	if (check_room(s))
-	{
-		DEB
-		return (1);
-	}
-	else if (check_path(s))
-	{
-		DEB
-		return (2);
-	}
-	putf(s, "\n");
-	DEB
-	return (0);
+	ft_putstr_fd("\033[1;35m", 2);
+	ft_putstr_fd(s, 2);
+	ft_putstr_fd(n, 2);
+	ft_putstr_fd("\033[0m", 2);
 }

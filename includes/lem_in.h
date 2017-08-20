@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 10:52:52 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/20 16:33:48 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/20 18:08:18 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@
 # include <libft.h>
 
 //debug
+# include <stdio.h>
 # define DEB debug(__FILE__, __LINE__);
 void				debug(char *file, int line);
+void				putf(char *s, char *n);
 //
 
 typedef	struct s_lem_in_file	t_lem_in_file;
@@ -74,7 +76,7 @@ t_lem_in_file		*stock_content(void);
 int					parse_content_light(t_lem_in_var *v, t_lem_in_file *file);
 int					check_ants_nb(t_lem_in_var *v, char *s);
 int					check_commands_and_comments(
-					t_lem_in_var *v, t_lem_in_file *file);
+					t_lem_in_var *v, t_lem_in_file **file);
 int					check_if_str_identical(char *s1, char *s2);
 int					check_if_room_or_path(char *s);
 int					check_room(char *s);
