@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/20 14:03:06 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/20 16:35:34 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/21 17:21:49 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ t_lem_in_room	*set_t_lem_in_room(
 		room->coord_y = get_coord_y_from_line(line);
 		room->is_start = is_start;
 		room->is_end = is_end;
+		room->value = 0;
 		room->path = NULL;
 		room->prev = NULL;
 		room->next = NULL;

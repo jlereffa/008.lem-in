@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 10:52:52 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/20 18:08:18 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/21 19:32:58 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef	struct s_lem_in_file	t_lem_in_file;
 typedef struct s_lem_in_path	t_lem_in_path;
 typedef struct s_lem_in_room	t_lem_in_room;
 typedef struct s_lem_in_var		t_lem_in_var;
+typedef struct s_lem_in_ant		t_lem_in_ant;
 
 struct				s_lem_in_file
 {
@@ -48,6 +49,7 @@ struct				s_lem_in_room
 	int				coord_y;
 	int				is_start;
 	int				is_end;
+	int				value;
 	t_lem_in_path	*path;
 	t_lem_in_room	*prev;
 	t_lem_in_room	*next;
@@ -62,6 +64,13 @@ struct				s_lem_in_var
 	int				has_path;
 };
 
+struct				s_lem_in_ant
+{
+	char			*name;
+	t_lem_in_room	*position;
+	t_lem_in_ant	*prev;
+	t_lem_in_ant	*next;
+};
 /*
 **	File manipulation functions
 */
@@ -98,6 +107,10 @@ int					rewind_t_lem_in_room(t_lem_in_room **room);
 t_lem_in_path		*set_t_lem_in_path(t_lem_in_room *room, t_lem_in_path *path,
 					char *target_room);
 int					rewind_t_lem_in_path(t_lem_in_path **path);
+t_lem_in_ant		*init_t_lem_in_ant(int ant_nb, t_lem_in_room *room);
+t_lem_in_ant		*set_t_lem_in_ant(
+					t_lem_in_ant *ant, int nb, t_lem_in_room *room);
+int					rewind_t_lem_in_ant(t_lem_in_ant **ant);
 
 /*
 **	Core functions
@@ -105,6 +118,8 @@ int					rewind_t_lem_in_path(t_lem_in_path **path);
 
 t_lem_in_room		*format_content_into_lst(t_lem_in_file *file);
 int					add_path_to_room(t_lem_in_room *room, char *line);
+int					apply_algorithm(t_lem_in_room *room);
+void				print_file(t_lem_in_file *file);
 
 /*
 **	Error handling functions

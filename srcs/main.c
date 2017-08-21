@@ -6,13 +6,13 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 10:59:01 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/21 11:50:40 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/21 19:35:44 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lem_in.h>
 
-void	recap(t_lem_in_var *v, t_lem_in_room *room)
+void	recap(t_lem_in_var *v, t_lem_in_room *room, t_lem_in_ant *ant)//
 {
 	t_lem_in_path *tmp_path;
 
@@ -35,8 +35,9 @@ void	recap(t_lem_in_var *v, t_lem_in_room *room)
 			return ;
 		}
 		tmp_path = room->path;
-		printf("ROOM : {%s}\n", room->name);
+		printf("\033[1;36mROOM : {%s}\n\033[0m", room->name);
 		printf("COORD_X {%d} | COORD_Y {%d}\n", room->coord_x, room->coord_y);
+		printf("\033[1;36mVALUE : %d\033[0m\n", room->value);
 		printf("PATH LIST : \n");
 		while (tmp_path)
 		{
@@ -44,6 +45,12 @@ void	recap(t_lem_in_var *v, t_lem_in_room *room)
 			tmp_path = tmp_path->next;
 		}
 		room = room->next;
+	}
+	while (ant)
+	{
+		printf("ANT NAME : {%s}\n", ant->name);
+		printf("ANT POSITION : {%s}\n", ant->position->name);
+		ant = ant->next;
 	}
 	printf("-----END_OF_RECAP-----\n");
 }
@@ -54,6 +61,7 @@ int	main(void)
 	t_lem_in_file	*file;
 	t_lem_in_room	*room;
 	t_lem_in_file	*tmp;//
+	t_lem_in_ant	*ant;
 
 	init_t_lem_in_var(&v);
 	if (!(file = stock_content()))
@@ -85,7 +93,20 @@ int	main(void)
 		DEB
 		return (handle_error());
 	}
-	recap(&v, room);//
 	DEB
+	if (!(apply_algorithm(room)))
+	{
+		DEB
+		return (handle_error());
+	}
+	DEB
+	if (!(ant = init_t_lem_in_ant(v.ants_nb, room)))
+	{
+		DEB
+		return (handle_error());
+	}
+	DEB
+	print_file(file);
+	recap(&v, room, ant);
 	return (0);
 }
