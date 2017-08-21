@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 19:48:22 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/21 20:01:58 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/21 20:10:48 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,33 +21,57 @@ int	find_and_print_solution(int ant_nb, t_lem_in_ant *ant)
 
 	i = 0;
 	turn = 1;
+	DEB
 	while (ant_nb)
 	{
+		DEB
 		ptr = ant;
-		while (ant && i < turn)
+		while (ptr && i < turn)
 		{
-			if (ant->position->path && !rewind_t_lem_in_path(&ant->position->path))
-				return 0;
-			best_way = 2147483647;
-			while (ant->position->path)
+			DEB
+			if (ptr->position->path && !rewind_t_lem_in_path(&ptr->position->path))
 			{
-				if (ant->position->path->room->value < best_way)
-					best_way = ant->position->path->room->value;
-				ant->position->path = ant->position->path->next;
+				DEB
+				return 0;
 			}
-			if (!rewind_t_lem_in_path(&ant->position->path))
+			DEB
+			best_way = 2147483647;
+			while (ptr->position->path)
+			{
+				DEB
+				if (ptr->position->path->room->value &&
+					ptr->position->path->room->value < best_way)
+				{
+					DEB
+					best_way = ptr->position->path->room->value;
+				}
+				ptr->position->path = ptr->position->path->next;
+			}
+			DEB
+			if (ptr->position->path && !rewind_t_lem_in_path(&ptr->position->path))
+			{
+				DEB
 				return (0);
-			while (ant->position->path->room->value != best_way)
-				ant->position->path = ant->position->path->next;
-			ant->position = ant->position->path->room;
+			}
+			while (ptr->position->path->room->value != best_way)
+			{
+				DEB
+				ptr->position->path = ant->position->path->next;
+			}
+			DEB
+			ptr->position = ptr->position->path->room;
 			ft_putstr(ant->name);
 			ft_putstr(ant->position->name);
 			ft_putstr(" ");
 			i++;
-			ant = ant->next;
+			ptr = ptr->next;
 		}
 		ft_putendl("");
 		i = 0;
-		turn++:
+		turn++;
+		ant_nb--;
+		DEB
 	}
+	DEB
+	return (1);
 }

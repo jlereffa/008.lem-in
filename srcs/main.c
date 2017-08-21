@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 10:59:01 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/21 20:03:10 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/21 20:04:05 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ int	main(void)
 	}
 	DEB
 	print_file(file);
+	DEB
 	if (!(find_and_print_solution(v.ants_nb, ant)))
 		return (handle_error());
 	recap(&v, room, ant);
