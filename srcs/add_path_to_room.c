@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/20 15:02:19 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/20 18:46:38 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/21 11:32:51 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ int	add_path_to_room(t_lem_in_room *room, char *line)
 	DEB
 	if (!get_rooms_names(line, &room_1_name, &room_2_name))
 		return (0);
-	putf("room_1_name : {", room_1_name);
-	putf("}\n", "");
-	putf("roon_2_name : {", room_2_name);
-	putf("}\n", "");
+	printf("\033[35m");
+	printf("%s | room_1_name : {%s}\n",__FILE__, room_1_name);
+	printf("%s | room_2_name : {%s}\n",__FILE__, room_2_name);
+	printf("\033[0m");
 	DEB
 	while (room->prev && !check_if_str_identical(room->name, room_1_name))
 		room = room->prev;
@@ -63,9 +63,8 @@ int	add_path_to_room(t_lem_in_room *room, char *line)
 	DEB
 	if (!check_if_str_identical(room->name, room_1_name))
 	{
-		putf("room->name : ", room->name);
-		putf("\nroom_1_name : ", room_1_name);
-		putf("\n", "");
+		DEB
+		printf("%s | room->name : {%s} | room_1_name {%s}\n", __FILE__, room->name, room_1_name);
 		return (0);
 	}
 	DEB
@@ -93,5 +92,5 @@ int	add_path_to_room(t_lem_in_room *room, char *line)
 		return (0);
 	}
 	DEB
-	return (0);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 19:09:43 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/20 16:33:32 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/21 11:36:01 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,26 +82,51 @@ int			parse_content_in_depth(t_lem_in_room *room)
 	int	start_nb;
 	int	end_nb;
 
+	DEB
 	start_nb = 0;
 	end_nb = 0;
+	DEB
 	if (!rewind_t_lem_in_room(&room))
+	{
+		DEB
 		return (0);
+	}
 	while (room)
 	{
+		DEB
 		if ((room->is_start && (start_nb += 1) && start_nb > 1) ||
 			(room->is_end && (end_nb += 1) && end_nb > 1))
+		{
+			DEB//
 			return (0);
-		if (!rewind_t_lem_in_path(&room->path))
+		}
+		if (room->path && !rewind_t_lem_in_path(&room->path))
+		{
+			DEB//
 			return (0);
+		}
 		if (!check_if_room_has_double(room))
+		{
+			DEB//
 			return (0);
+		}
 		if (!check_if_room_has_same_coord(room))
+		{
+			DEB//
 			return (0);
+		}
 		if (!check_if_room_path_has_double(room->path))
+		{
+			DEB//
 			return (0);
+		}
 		if ((room->is_start || room->is_end) && !room->path)
+		{
+			DEB
 			return (0);
+		}
 		room = room->next;
 	}
+	DEB
 	return (1);
 }
