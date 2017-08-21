@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 19:30:24 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/21 19:31:34 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/21 19:38:44 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static char		*get_ant_name(int nb)
 		return (0);
 	while (name[len])
 		len++;
-	if (!(name_final = (char*)malloc(sizeof(char) * len + 2)))
+	if (!(name_final = (char*)malloc(sizeof(char) * len + 3)))
 		return (0);
 	ptr = name;
 	len = 1;
@@ -35,7 +35,8 @@ static char		*get_ant_name(int nb)
 		name++;
 		len++;
 	}
-	name_final[len] = '\0';
+	name_final[len] = '-';
+	name_final[len + 1] = '\0';
 	return (name_final);
 }
 
