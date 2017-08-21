@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 10:52:52 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/21 19:32:58 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/21 20:02:48 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ t_lem_in_room		*format_content_into_lst(t_lem_in_file *file);
 int					add_path_to_room(t_lem_in_room *room, char *line);
 int					apply_algorithm(t_lem_in_room *room);
 void				print_file(t_lem_in_file *file);
+int					find_and_print_solution(int ant_nb, t_lem_in_ant *ant);
 
 /*
 **	Error handling functions
