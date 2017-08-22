@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/20 15:02:19 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/21 11:32:51 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/22 14:48:21 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ static int	get_rooms_names(char *line, char **room_1_name, char **room_2_name)
 	i = -1;
 	while (*line != '-' && (++i + 1) && ((*room_1_name)[i] = *line))
 		line++;
-	printf("i : {%d}\n", i);
+	//printf("i : {%d}\n", i);
 	(*room_1_name)[i + 1] = '\0';
-	printf("room_1_name : {%s}\n", *room_1_name);
+	//printf("room_1_name : {%s}\n", *room_1_name);
 	i = 0;
 	line++;
 	while (line[i])
@@ -50,11 +50,11 @@ int	add_path_to_room(t_lem_in_room *room, char *line)
 	DEB
 	if (!get_rooms_names(line, &room_1_name, &room_2_name))
 		return (0);
-	printf("\033[35m");
+	/*printf("\033[35m");
 	printf("%s | room_1_name : {%s}\n",__FILE__, room_1_name);
 	printf("%s | room_2_name : {%s}\n",__FILE__, room_2_name);
 	printf("\033[0m");
-	DEB
+	*/DEB
 	while (room->prev && !check_if_str_identical(room->name, room_1_name))
 		room = room->prev;
 	DEB
@@ -64,7 +64,7 @@ int	add_path_to_room(t_lem_in_room *room, char *line)
 	if (!check_if_str_identical(room->name, room_1_name))
 	{
 		DEB
-		printf("%s | room->name : {%s} | room_1_name {%s}\n", __FILE__, room->name, room_1_name);
+		//printf("%s | room->name : {%s} | room_1_name {%s}\n", __FILE__, room->name, room_1_name);
 		return (0);
 	}
 	DEB

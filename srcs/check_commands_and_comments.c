@@ -6,47 +6,54 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 16:33:11 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/20 17:03:30 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/22 15:12:20 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lem_in.h>
 
+static int	check_start_end_room(t_lem_in_file **file, char *s)
+{
+	ft_putendl(s);
+	while (*file)
+	{
+		ft_putendl((*file)->line);
+		if (check_if_str_identical((*file)->line, "##start") ||
+			check_if_str_identical((*file)->line, "##end") ||
+			(*(*file)->line != '#' && !check_room((*file)->line)))
+			return (0);
+		if (check_room((*file)->line))
+			return (1);
+		*file = (*file)->next;
+	}
+	return (0);
+}
+
 int	check_commands_and_comments(t_lem_in_var *v, t_lem_in_file **file)
 {
-	DEB
-	if (check_if_str_identical((*file)->line, "##start"))
+	while (*file && *(*file)->line == '#')
 	{
-		DEB
-		if (!(*file)->next || !(*file)->next->line || !check_room((*file)->next->line))
+		if (check_if_str_identical((*file)->line, "##start"))
 		{
-			DEB
-			return (0);
+			if (!(*file)->next || !(*file)->next->line ||
+				!check_start_end_room(&(*file)->next, "##start"))
+				return (0);
+			v->stated_start = 1;
+			if (*file)
+				*file = (*file)->next;
 		}
-		v->stated_start = 1;
-		ft_putendl((*file)->line);
-		*file = (*file)->next;
-	}
-	else if (check_if_str_identical((*file)->line, "##end"))
-	{
-		DEB
-		if (!(*file)->next || !(*file)->next->line || !check_room((*file)->next->line))
+		else if (check_if_str_identical((*file)->line, "##end"))
 		{
-			DEB
-			return (0);
+			if (!(*file)->next || !(*file)->next->line ||
+				!check_start_end_room(&(*file)->next, "##end"))
+				return (0);
+			v->stated_end = 1;
+			if (*file)
+				*file = (*file)->next;
 		}
-		v->stated_end = 1;
-		ft_putendl((*file)->line);
+		else
+			ft_putendl((*file)->line);
 		*file = (*file)->next;
 	}
-	else if (*(*file)->line + 1 && (*(*file)->line + 1 != '#' ||
-			(*(*file)->line + 2 && *(*file)->line + 1 == '#' &&
-			*(*file)->line + 2 == '#')))
-	{
-		DEB
-		ft_putendl((*file)->line);
-		*file = (*file)->next;
-	}
-	DEB
 	return (1);
 }

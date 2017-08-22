@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 19:48:22 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/22 12:08:25 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/22 15:14:21 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int			find_and_print_solution(int ant_nb, t_lem_in_ant *ant)
 	t_lem_in_path	*ptr2;
 
 	turn = 0;
+	ft_putendl("");
 	while (ant_nb && ++turn && (i = -1))
 	{
 		ptr1 = ant;

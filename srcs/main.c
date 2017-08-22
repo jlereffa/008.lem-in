@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 10:59:01 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/22 11:41:52 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/22 14:43:10 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	main(void)
 	tmp = file;
 	while (tmp)
 	{
-		printf("file line : {%s}\n", tmp->line);
+		//printf("file line : {%s}\n", tmp->line);
 		tmp = tmp->next;
 	}
 	DEB
@@ -105,8 +105,6 @@ int	main(void)
 		DEB
 		return (handle_error());
 	}
-//	DEB
-	print_file(file);
 //	DEB
 //	recap(&v, room, ant);
 	if (!(find_and_print_solution(v.ants_nb, ant)))

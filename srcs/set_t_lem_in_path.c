@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/20 15:01:49 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/20 18:51:02 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/22 14:49:24 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ t_lem_in_path	*set_t_lem_in_path(
 		while (room->prev && !check_if_str_identical(room->name, target_room))
 		{
 			DEB
-			printf("room->name : {%s} | target_room : {%s}\n", room->name, target_room);
+			//printf("room->name : {%s} | target_room : {%s}\n", room->name, target_room);
 			room = room->prev;
 		}
 		DEB
 		while (room->next && !check_if_str_identical(room->name, target_room))
 		{
 			DEB
-			printf("room->name : {%s} | target_room : {%s}\n", room->name, target_room);
+			//printf("room->name : {%s} | target_room : {%s}\n", room->name, target_room);
 			room = room->next;
 		}
 		DEB
