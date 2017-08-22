@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 10:52:52 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/22 17:09:48 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/22 19:39:10 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,10 @@ struct				s_lem_in_var
 	int				stated_end;
 	int				has_room;
 	int				has_path;
+	int				has_file;
+	int				has_room;
+	int				has_path;
+	int				has_ants;
 };
 
 struct				s_lem_in_ant
@@ -69,7 +73,7 @@ struct				s_lem_in_ant
 **	File manipulation functions
 */
 
-t_lem_in_file		*stock_content(void);
+t_lem_in_file		*stock_content(int *has_file);
 
 /*
 **	Parsing functions
@@ -108,7 +112,8 @@ int					rewind_t_lem_in_ant(t_lem_in_ant **ant);
 **	Core functions
 */
 
-t_lem_in_room		*format_content_into_lst(t_lem_in_file *file);
+t_lem_in_room		*format_content_into_lst(
+					t_lem_in_file *file, int *has_room, int *has_path);
 int					add_path_to_room(t_lem_in_room *room, char *line);
 int					apply_algorithm(t_lem_in_room *room);
 void				print_file(t_lem_in_file *file);
