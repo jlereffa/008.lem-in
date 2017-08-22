@@ -6,7 +6,7 @@
 #    By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/26 13:43:21 by jlereffa          #+#    #+#              #
-#    Updated: 2017/08/21 20:02:28 by jlereffa         ###   ########.fr        #
+#    Updated: 2017/08/22 17:44:53 by jlereffa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,14 +24,14 @@ LIBFT_PATH = libft/
 
 ##FILES
 SRC_NAME =	main.c handle_error.c rewind_t_lem_in_file.c set_t_lem_in_file.c\
-			stock_content.c debug.c putf.c init_t_lem_in_var.c\
+			stock_content.c init_t_lem_in_var.c\
 			check_if_str_identical.c check_ants_nb.c check_room.c\
 			check_commands_and_comments.c check_if_room_or_path.c check_path.c\
 			estimate_if_doable.c parse_content_in_depth.c\
 			format_content_into_lst.c set_t_lem_in_room.c set_t_lem_in_path.c\
 			add_path_to_room.c parse_content_light.c\
 			rewind_t_lem_in_room.c rewind_t_lem_in_path.c apply_algorithm.c\
-			print_file.c set_t_lem_in_ant.c init_t_lem_in_ant.c\
+			set_t_lem_in_ant.c init_t_lem_in_ant.c\
 			rewind_t_lem_in_ant.c find_and_print_solution.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
