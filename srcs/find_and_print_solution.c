@@ -6,72 +6,66 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 19:48:22 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/21 20:10:48 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/22 12:08:25 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lem_in.h>
 
-int	find_and_print_solution(int ant_nb, t_lem_in_ant *ant)
+static void	print_ant_position(char *name, char *room_name)
+{
+	ft_putstr(name);
+	ft_putstr(room_name);
+	ft_putstr(" ");
+}
+
+static int	set_ant_and_path_pointers(t_lem_in_ant **ptr1, t_lem_in_path **ptr2)
+{
+	while ((*ptr1)->next && (*ptr1)->escaped)
+		*ptr1 = (*ptr1)->next;
+	if (!rewind_t_lem_in_path(&(*ptr1)->position->path))
+		return (0);
+	*ptr2 = (*ptr1)->position->path;
+	return (1);
+}
+
+static void	find_best_way(t_lem_in_ant **ptr1, t_lem_in_path **ptr2, int best)
+{
+	while (*ptr2)
+	{
+		if ((*ptr2)->room->value < best)
+			best = (*ptr2)->room->value;
+		*ptr2 = (*ptr2)->next;
+	}
+	(*ptr2) = (*ptr1)->position->path;
+	while ((*ptr2)->room->value != best)
+		*ptr2 = (*ptr2)->next;
+}
+
+int			find_and_print_solution(int ant_nb, t_lem_in_ant *ant)
 {
 	int				i;
 	int				turn;
 	int				best_way;
-	t_lem_in_ant	*ptr;
+	t_lem_in_ant	*ptr1;
+	t_lem_in_path	*ptr2;
 
-	i = 0;
-	turn = 1;
-	DEB
-	while (ant_nb)
+	turn = 0;
+	while (ant_nb && ++turn && (i = -1))
 	{
-		DEB
-		ptr = ant;
-		while (ptr && i < turn)
+		ptr1 = ant;
+		while (ptr1 && ++i < turn && (best_way = 2147483647))
 		{
-			DEB
-			if (ptr->position->path && !rewind_t_lem_in_path(&ptr->position->path))
-			{
-				DEB
-				return 0;
-			}
-			DEB
-			best_way = 2147483647;
-			while (ptr->position->path)
-			{
-				DEB
-				if (ptr->position->path->room->value &&
-					ptr->position->path->room->value < best_way)
-				{
-					DEB
-					best_way = ptr->position->path->room->value;
-				}
-				ptr->position->path = ptr->position->path->next;
-			}
-			DEB
-			if (ptr->position->path && !rewind_t_lem_in_path(&ptr->position->path))
-			{
-				DEB
+			if (!set_ant_and_path_pointers(&ptr1, &ptr2))
 				return (0);
-			}
-			while (ptr->position->path->room->value != best_way)
-			{
-				DEB
-				ptr->position->path = ant->position->path->next;
-			}
-			DEB
-			ptr->position = ptr->position->path->room;
-			ft_putstr(ant->name);
-			ft_putstr(ant->position->name);
-			ft_putstr(" ");
-			i++;
-			ptr = ptr->next;
+			find_best_way(&ptr1, &ptr2, best_way);
+			ptr1->position = ptr2->room;
+			print_ant_position(ptr1->name, ptr1->position->name);
+			if (ptr1->position->is_end && !ptr1->escaped && (ptr1->escaped = 1))
+				ant_nb--;
+			ptr1 = ptr1->next;
 		}
 		ft_putendl("");
-		i = 0;
-		turn++;
-		ant_nb--;
-		DEB
 	}
-	DEB
 	return (1);
 }

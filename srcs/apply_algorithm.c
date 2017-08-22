@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 15:38:19 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/21 17:22:53 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/22 11:21:01 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,8 @@ static void	give_value(t_lem_in_room *room, int *start_found)
 			tmp->room->value = room->value + 1;
 		if (tmp->room->is_start)
 			*start_found = 1;
-		else
-		{
-			if (tmp->room->value > room->value)
-				give_value(tmp->room, start_found);
-		}
+		if (tmp->room->value > room->value)
+			give_value(tmp->room, start_found);
 		tmp = tmp->next;
 	}
 	DEB

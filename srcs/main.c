@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 10:59:01 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/21 20:04:05 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/22 11:41:52 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,11 +105,12 @@ int	main(void)
 		DEB
 		return (handle_error());
 	}
-	DEB
+//	DEB
 	print_file(file);
-	DEB
+//	DEB
+//	recap(&v, room, ant);
 	if (!(find_and_print_solution(v.ants_nb, ant)))
 		return (handle_error());
-	recap(&v, room, ant);
+	//recap(&v, room, ant);
 	return (0);
 }

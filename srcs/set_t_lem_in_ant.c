@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 19:30:24 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/21 19:38:44 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/22 11:34:07 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ t_lem_in_ant	*set_t_lem_in_ant(
 			return (0);
 		if (!(ant->name = get_ant_name(nb)))
 			return (0);
+		ant->escaped = 0;
 		ant->position = room;
 		ant->prev = 0;
 		ant->next = 0;

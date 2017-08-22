@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 10:52:52 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/21 20:02:48 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/22 11:33:42 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ struct				s_lem_in_var
 struct				s_lem_in_ant
 {
 	char			*name;
+	int				escaped;
 	t_lem_in_room	*position;
 	t_lem_in_ant	*prev;
 	t_lem_in_ant	*next;
