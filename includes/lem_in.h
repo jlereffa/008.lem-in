@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 10:52:52 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/22 15:43:35 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/22 17:09:48 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,6 @@
 # define LEM_IN_H
 
 # include <libft.h>
-
-//debug
-# include <stdio.h>
-# define DEB debug(__FILE__, __LINE__);
-void				debug(char *file, int line);
-void				putf(char *s, char *n);
-//
 
 typedef	struct s_lem_in_file	t_lem_in_file;
 typedef struct s_lem_in_path	t_lem_in_path;
@@ -78,7 +71,6 @@ struct				s_lem_in_ant
 
 t_lem_in_file		*stock_content(void);
 
-
 /*
 **	Parsing functions
 */
@@ -93,7 +85,6 @@ int					check_room(char *s);
 int					check_path(char *s);
 int					estimate_if_doable(t_lem_in_var *v);
 int					parse_content_in_depth(t_lem_in_room *room);
-
 
 /*
 **	Linked lists manipulation functions

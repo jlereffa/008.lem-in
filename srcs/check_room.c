@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 17:33:54 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/22 15:50:14 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/22 17:05:53 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,47 +14,26 @@
 
 int	check_room(char *s)
 {
-	DEB
-	putf(s, "\n");
 	if (!s || !*s || *s == '#' || *s == 'L' || *s < 32 || *s > 126 || *s == ' '
 		|| *s == '-')
 		return (0);
-	DEB
 	while (*s && *s >= 32 && *s <= 126 && *s != ' ' && *s != '-')
 		s++;
-	DEB
 	if (!*s || (*s && *s == '-') || *s != ' ')
-	{
-		DEB
 		return (0);
-	}
-	DEB
 	s++;
 	if (!*s || !(*s >= '0' && *s <= '9'))
-	{
-		DEB
 		return (0);
-	}
 	while (*s && *s >= '0' && *s <= '9')
 		s++;
 	if (!*s || *s != ' ')
-	{
-		DEB
 		return (0);
-	}
 	s++;
 	if (!*s || !(*s >= '0' && *s <= '9'))
-	{
-		DEB
 		return (0);
-	}
 	while (*s && *s >= '0' && *s <= '9')
 		s++;
 	if (*s)
-	{
-		DEB
 		return (0);
-	}
-	DEB
 	return (1);
 }

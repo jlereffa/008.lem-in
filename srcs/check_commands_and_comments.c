@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 16:33:11 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/22 15:38:00 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/22 17:06:57 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	check_start_end_room(t_lem_in_var *v, t_lem_in_file **file, char *s)
 	return (0);
 }
 
-int	check_commands_and_comments(t_lem_in_var *v, t_lem_in_file **file)
+int			check_commands_and_comments(t_lem_in_var *v, t_lem_in_file **file)
 {
 	while (*file && *(*file)->line == '#')
 	{
