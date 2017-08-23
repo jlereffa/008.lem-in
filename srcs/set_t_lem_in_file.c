@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 11:32:33 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/19 11:36:34 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/23 12:08:50 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ t_lem_in_file	*set_t_lem_in_file(t_lem_in_file *file, char *ptr)
 		if (!(file = (t_lem_in_file*)malloc(sizeof(t_lem_in_file))))
 			return (0);
 		file->line = ptr;
-		file->prev = NULL;
-		file->next = NULL;
+		file->prev = 0;
+		file->next = 0;
 		return (file);
 	}
 	while (file->next)

@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 10:52:52 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/22 19:39:10 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/23 12:14:09 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,8 @@ t_lem_in_ant		*init_t_lem_in_ant(int ant_nb, t_lem_in_room *room);
 t_lem_in_ant		*set_t_lem_in_ant(
 					t_lem_in_ant *ant, int nb, t_lem_in_room *room);
 int					rewind_t_lem_in_ant(t_lem_in_ant **ant);
+void				free_all_struct(t_lem_in_file *file, t_lem_in_room *room,
+					t_lem_in_ant *ant);
 
 /*
 **	Core functions
@@ -123,6 +125,7 @@ int					find_and_print_solution(int ant_nb, t_lem_in_ant *ant);
 **	Error handling functions
 */
 
-int					handle_error();
+int					handle_error(t_lem_in_file *file, t_lem_in_room *room,
+					t_lem_in_ant *ant);
 
 #endif

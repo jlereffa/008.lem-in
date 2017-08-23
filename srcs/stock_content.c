@@ -6,13 +6,13 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 11:15:41 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/22 19:35:31 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/23 12:03:38 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lem_in.h>
 
-t_lem_in_file	*stock_content(int *has_file)
+t_lem_in_file	*stock_content(void)
 {
 	char			*ptr;
 	int				ret;
@@ -26,7 +26,6 @@ t_lem_in_file	*stock_content(int *has_file)
 		line_nb++;
 		if (!(file = set_t_lem_in_file(file, ptr)))
 			return (0);
-		*has_file = 1;
 	}
 	if (ret == -1 || line_nb < 6)
 		return (0);

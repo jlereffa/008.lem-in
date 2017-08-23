@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/20 14:03:06 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/22 15:43:55 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/23 12:09:20 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ t_lem_in_room	*set_t_lem_in_room(
 		room->is_start = is_start;
 		room->is_end = is_end;
 		room->value = 0;
-		room->path = NULL;
-		room->prev = NULL;
-		room->next = NULL;
+		room->path = 0;
+		room->prev = 0;
+		room->next = 0;
 		return (room);
 	}
 	while (room->next)

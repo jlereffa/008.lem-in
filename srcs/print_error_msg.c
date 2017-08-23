@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_error.c                                     :+:      :+:    :+:   */
+/*   print_error_msg.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/19 11:18:00 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/23 12:13:18 by jlereffa         ###   ########.fr       */
+/*   Created: 2017/08/23 12:10:32 by jlereffa          #+#    #+#             */
+/*   Updated: 2017/08/23 12:11:10 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lem_in.h>
 
-int	handle_error(t_lem_in_file *file, t_lem_in_room *room, t_lem_in_ant *ant)
+int	print_error_msg(char *error_msg)
 {
-	free_all_struct(file, room, ant);
-	write(1, "ERROR\n", 6);
+	ft_putendl(error_msg);
 	return (0);
 }
