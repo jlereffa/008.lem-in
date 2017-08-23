@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 10:59:01 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/23 14:25:50 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/23 14:39:22 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,12 @@ int	main(void)
 	room = 0;
 	ant = 0;
 	init_t_lem_in_var(&v);
-	if (!(file = stock_content()))
-		return (handle_error(&file, &room, &ant));
-	if (!parse_content_light(&v, file) && (!estimate_if_doable(&v)))
-		return (handle_error(&file, &room, &ant));
-	if (!(room = format_content_into_lst(file)))
-		return (handle_error(&file, &room, &ant));
-	if (!parse_content_in_depth(room))
-		return (handle_error(&file, &room, &ant));
-	if (!(apply_algorithm(room)))
-		return (handle_error(&file, &room, &ant));
-	if (!(ant = init_t_lem_in_ant(v.ants_nb, room)))
+	if (!(file = stock_content()) ||
+		(!parse_content_light(&v, file) && (!estimate_if_doable(&v))) ||
+		!(room = format_content_into_lst(file)) ||
+		!parse_content_in_depth(room) ||
+		!apply_algorithm(room) ||
+		!(ant = init_t_lem_in_ant(v.ants_nb, room)))
 		return (handle_error(&file, &room, &ant));
 	if (check_if_start_has_path_to_end(room))
 		get_ants_out_easy(ant, room);
