@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 19:09:43 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/22 17:08:51 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/23 13:25:10 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,22 +85,22 @@ int			parse_content_in_depth(t_lem_in_room *room)
 	start_nb = 0;
 	end_nb = 0;
 	if (!rewind_t_lem_in_room(&room))
-		return (0);
+		return (print_error_msg(ER_REWIND));
 	while (room)
 	{
 		if ((room->is_start && (start_nb += 1) && start_nb > 1) ||
 			(room->is_end && (end_nb += 1) && end_nb > 1))
-			return (0);
+			return (print_error_msg(ER_TOO_MANY_STARTING_ENDING_ROOM));
 		if (room->path && !rewind_t_lem_in_path(&room->path))
-			return (0);
+			return (print_error_msg(ER_REWIND));
 		if (!check_if_room_has_double(room))
-			return (0);
+			return (print_error_msg(ER_ROOM_SAME_NAME));
 		if (!check_if_room_has_same_coord(room))
-			return (0);
+			return (print_error_msg(ER_ROOM_SAME_COORD));
 		if (!check_if_room_path_has_double(room->path))
-			return (0);
+			return (print_error_msg(ER_DOUBLE_PATH));
 		if ((room->is_start || room->is_end) && !room->path)
-			return (0);
+			return (print_error_msg(ER_START_END_NOT_CONNECTED));
 		room = room->next;
 	}
 	return (1);

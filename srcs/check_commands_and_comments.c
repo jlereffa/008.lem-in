@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 16:33:11 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/22 17:06:57 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/23 12:24:32 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int			check_commands_and_comments(t_lem_in_var *v, t_lem_in_file **file)
 		{
 			if (!(*file)->next || !(*file)->next->line ||
 				!check_start_end_room(v, &(*file)->next, "##start"))
-				return (0);
+				return (print_error_msg(ER_START_ROOM));
 			v->stated_start = 1;
 			if (*file)
 				*file = (*file)->next;
@@ -49,7 +49,7 @@ int			check_commands_and_comments(t_lem_in_var *v, t_lem_in_file **file)
 		{
 			if (!(*file)->next || !(*file)->next->line ||
 				!check_start_end_room(v, &(*file)->next, "##end"))
-				return (0);
+				return (print_error_msg(ER_END_ROOM));
 			v->stated_end = 1;
 			if (*file)
 				*file = (*file)->next;

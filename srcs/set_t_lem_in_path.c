@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/20 15:01:49 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/22 17:09:30 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/23 13:29:19 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ t_lem_in_path	*set_t_lem_in_path(
 {
 	if (!path)
 	{
-		if (!(path = (t_lem_in_path*)malloc(sizeof(t_lem_in_path))))
+		if (!(path = (t_lem_in_path*)malloc(sizeof(t_lem_in_path))) &&
+			!print_error_msg(ER_MALLOC))
 			return (0);
 		while (room->prev && !check_if_str_identical(room->name, target_room))
 			room = room->prev;

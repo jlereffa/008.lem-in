@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_if_str_identical.c                           :+:      :+:    :+:   */
+/*   free_all_struct.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/19 12:41:28 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/23 12:42:19 by jlereffa         ###   ########.fr       */
+/*   Created: 2017/08/23 12:51:24 by jlereffa          #+#    #+#             */
+/*   Updated: 2017/08/23 13:32:28 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lem_in.h>
 
-int	check_if_str_identical(char *s1, char *s2)
+void	free_all_struct(t_lem_in_file **file, t_lem_in_room **room,
+		t_lem_in_ant **ant)
 {
-	if (!s1 || !s2)
-		return (print_error_msg(ER_S1_OR_S2_POINTER_NULL));
-	while (*s1 && *s2)
-	{
-		if (*s1 != *s2)
-			return (0);
-		s1++;
-		s2++;
-	}
-	if (*s1 || *s2)
-		return (0);
-	return (1);
+	if (file && rewind_t_lem_in_file(file))
+		del_and_set_to_null_t_lem_in_file(file);
+	if (room && rewind_t_lem_in_room(room))
+		del_and_set_to_null_t_lem_in_room(room);
+	if (ant && rewind_t_lem_in_ant(ant))
+		del_and_set_to_null_t_lem_in_ant(ant);
 }

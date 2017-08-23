@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/20 15:02:19 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/22 17:11:15 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/23 12:41:23 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	get_rooms_names(char *line, char **room_1_name, char **room_2_name)
 	while (line[i] != '-')
 		i++;
 	if (!(*room_1_name = (char*)malloc(sizeof(char) * i + 1)))
-		return (0);
+		return (print_error_msg(ER_MALLOC));
 	i = -1;
 	while (*line != '-' && (++i + 1) && ((*room_1_name)[i] = *line))
 		line++;
@@ -30,7 +30,7 @@ static int	get_rooms_names(char *line, char **room_1_name, char **room_2_name)
 	while (line[i])
 		i++;
 	if (!(*room_2_name = (char*)malloc(sizeof(char) * i + 1)))
-		return (0);
+		return (print_error_msg(ER_MALLOC));
 	i = -1;
 	while (*line && (++i + 1) && ((*room_2_name)[i] = *line))
 		line++;

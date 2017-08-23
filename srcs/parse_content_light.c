@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 12:09:30 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/22 17:32:48 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/23 13:41:37 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ int			parse_content_light(t_lem_in_var *v, t_lem_in_file *file)
 		{
 			if (file && !ret && !(ret = check_if_room_or_path(file->line) &&
 				!(ret2 = ret)))
-				return (0);
+				return (print_error_msg(ER_NOT_A_VALID_LINE));
 			else if (file && ret && ret > (ret2 =
 					check_if_room_or_path(file->line)))
-				return (0);
+				return (print_error_msg(ER_ROOM_IN_PATH));
 			set_room_and_path_counters(&v->has_room, &v->has_path, ret2);
 		}
 		file ? ft_putendl(file->line) : 0;

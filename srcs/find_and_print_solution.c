@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 19:48:22 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/22 15:14:21 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/23 12:39:03 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	set_ant_and_path_pointers(t_lem_in_ant **ptr1, t_lem_in_path **ptr2)
 	while ((*ptr1)->next && (*ptr1)->escaped)
 		*ptr1 = (*ptr1)->next;
 	if (!rewind_t_lem_in_path(&(*ptr1)->position->path))
-		return (0);
+		return (print_error_msg(ER_REWIND));
 	*ptr2 = (*ptr1)->position->path;
 	return (1);
 }

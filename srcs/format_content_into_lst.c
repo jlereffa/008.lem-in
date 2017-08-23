@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 19:18:36 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/23 12:07:20 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/23 13:26:40 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,16 @@ static int		check_file_line(t_lem_in_file **file, t_lem_in_room **room)
 	return (1);
 }
 
-t_lem_in_room	*format_content_into_lst(t_lem_in_file *file, int *has_room)
+t_lem_in_room	*format_content_into_lst(t_lem_in_file *file)
 {
 	t_lem_in_room	*room;
 
 	room = 0;
-	if (!file)
+	if (!file && !print_error_msg(ER_BAD_FILE))
 		return (0);
 	while (file)
 	{
-		if (!(check_file_line(&file, &room, has_room)))
+		if (!(check_file_line(&file, &room)))
 			return (0);
 		file = file->next;
 	}

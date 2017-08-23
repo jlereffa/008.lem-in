@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 19:30:24 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/22 11:34:07 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/23 13:29:59 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ static char		*get_ant_name(int nb)
 		return (0);
 	while (name[len])
 		len++;
-	if (!(name_final = (char*)malloc(sizeof(char) * len + 3)))
+	if (!(name_final = (char*)malloc(sizeof(char) * len + 3)) &&
+		!print_error_msg(ER_MALLOC))
 		return (0);
 	ptr = name;
 	len = 1;
@@ -45,7 +46,8 @@ t_lem_in_ant	*set_t_lem_in_ant(
 {
 	if (!ant)
 	{
-		if (!(ant = (t_lem_in_ant*)malloc(sizeof(t_lem_in_ant))))
+		if (!(ant = (t_lem_in_ant*)malloc(sizeof(t_lem_in_ant))) &&
+			!print_error_msg(ER_MALLOC))
 			return (0);
 		if (!(ant->name = get_ant_name(nb)))
 			return (0);

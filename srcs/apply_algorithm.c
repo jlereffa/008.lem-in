@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 15:38:19 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/22 17:11:01 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/23 12:36:31 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ int			apply_algorithm(t_lem_in_room *room)
 		room = room->next;
 	give_value(room, &start_found);
 	if (!start_found)
-		return (0);
+		return (print_error_msg(ER_START_NOT_FOUND));
 	return (1);
 }

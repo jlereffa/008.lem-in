@@ -6,7 +6,7 @@
 #    By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/26 13:43:21 by jlereffa          #+#    #+#              #
-#    Updated: 2017/08/22 17:44:53 by jlereffa         ###   ########.fr        #
+#    Updated: 2017/08/23 13:37:41 by jlereffa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,11 @@ SRC_NAME =	main.c handle_error.c rewind_t_lem_in_file.c set_t_lem_in_file.c\
 			add_path_to_room.c parse_content_light.c\
 			rewind_t_lem_in_room.c rewind_t_lem_in_path.c apply_algorithm.c\
 			set_t_lem_in_ant.c init_t_lem_in_ant.c\
-			rewind_t_lem_in_ant.c find_and_print_solution.c
+			rewind_t_lem_in_ant.c find_and_print_solution.c free_all_struct.c\
+			del_and_set_to_null_t_lem_in_file.c\
+			del_and_set_to_null_t_lem_in_ant.c\
+			del_and_set_to_null_t_lem_in_room.c\
+			del_and_set_to_null_t_lem_in_path.c print_error_msg.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 LIB_NAME = -lft
