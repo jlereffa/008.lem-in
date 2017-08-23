@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 10:52:52 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/23 13:41:12 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/23 14:31:46 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,9 @@ void				free_all_struct(t_lem_in_file **file, t_lem_in_room **room,
 t_lem_in_room		*format_content_into_lst(t_lem_in_file *file);
 int					add_path_to_room(t_lem_in_room *room, char *line);
 int					apply_algorithm(t_lem_in_room *room);
-void				print_file(t_lem_in_file *file);
+int					check_if_start_has_path_to_end(t_lem_in_room *room);
+void				get_ants_out_easy(t_lem_in_ant *ant,
+					t_lem_in_room *room);
 int					find_and_print_solution(int ant_nb, t_lem_in_ant *ant);
 
 /*

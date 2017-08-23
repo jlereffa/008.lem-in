@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 19:48:22 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/23 12:39:03 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/23 14:04:17 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static void	print_ant_position(char *name, char *room_name)
 {
 	ft_putstr(name);
 	ft_putstr(room_name);
-	ft_putstr(" ");
 }
 
 static int	set_ant_and_path_pointers(t_lem_in_ant **ptr1, t_lem_in_path **ptr2)
@@ -62,6 +61,8 @@ int			find_and_print_solution(int ant_nb, t_lem_in_ant *ant)
 			find_best_way(&ptr1, &ptr2, best_way);
 			ptr1->position = ptr2->room;
 			print_ant_position(ptr1->name, ptr1->position->name);
+			if (i + 1 < turn && ptr1->next)
+				ft_putstr(" ");
 			if (ptr1->position->is_end && !ptr1->escaped && (ptr1->escaped = 1))
 				ant_nb--;
 			ptr1 = ptr1->next;

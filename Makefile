@@ -6,7 +6,7 @@
 #    By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/26 13:43:21 by jlereffa          #+#    #+#              #
-#    Updated: 2017/08/23 13:37:41 by jlereffa         ###   ########.fr        #
+#    Updated: 2017/08/23 14:30:35 by jlereffa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,8 @@ SRC_NAME =	main.c handle_error.c rewind_t_lem_in_file.c set_t_lem_in_file.c\
 			del_and_set_to_null_t_lem_in_file.c\
 			del_and_set_to_null_t_lem_in_ant.c\
 			del_and_set_to_null_t_lem_in_room.c\
-			del_and_set_to_null_t_lem_in_path.c print_error_msg.c
+			del_and_set_to_null_t_lem_in_path.c print_error_msg.c\
+			get_ants_out_easy.c check_if_start_has_path_to_end.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 LIB_NAME = -lft

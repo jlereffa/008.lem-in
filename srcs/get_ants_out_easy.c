@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_t_lem_in_var.c                                :+:      :+:    :+:   */
+/*   get_ants_out_easy.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/19 12:12:54 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/23 14:30:53 by jlereffa         ###   ########.fr       */
+/*   Created: 2017/08/23 13:54:27 by jlereffa          #+#    #+#             */
+/*   Updated: 2017/08/23 14:07:45 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lem_in.h>
 
-void	init_t_lem_in_var(t_lem_in_var *v)
+void	get_ants_out_easy(t_lem_in_ant *ant, t_lem_in_room *room)
 {
-	v->ants_nb = 0;
-	v->stated_start = 0;
-	v->stated_end = 0;
-	v->has_room = 0;
-	v->has_path = 0;
+	while (room->prev && !room->is_end)
+		room = room->prev;
+	while (room->next && !room->is_end)
+		room = room->next;
+	ft_putendl("");
+	while (ant)
+	{
+		ft_putstr(ant->name);
+		ft_putstr(room->name);
+		if (ant->next)
+			ft_putstr(" ");
+		ant = ant->next;
+	}
+	ft_putendl("");
 }
