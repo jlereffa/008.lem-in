@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/23 13:09:52 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/23 13:36:21 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/23 14:41:41 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	handle_existing_prev_and_null_next(t_lem_in_room **room)
 	*room = (*room)->prev;
 }
 
-static void handle_null_prev_and_existing_next(t_lem_in_room **room)
+static void	handle_null_prev_and_existing_next(t_lem_in_room **room)
 {
 	(*room)->next->prev = 0;
 	*room = (*room)->next;

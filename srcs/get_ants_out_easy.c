@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/23 13:54:27 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/23 14:07:45 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/23 14:47:11 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	get_ants_out_easy(t_lem_in_ant *ant, t_lem_in_room *room)
 		room = room->prev;
 	while (room->next && !room->is_end)
 		room = room->next;
-	ft_putendl("");
 	while (ant)
 	{
 		ft_putstr(ant->name);

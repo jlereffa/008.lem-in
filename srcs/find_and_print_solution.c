@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 19:48:22 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/23 14:04:17 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/23 14:47:15 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,12 @@ static void	find_best_way(t_lem_in_ant **ptr1, t_lem_in_path **ptr2, int best)
 		*ptr2 = (*ptr2)->next;
 }
 
+static void	put_space_if_needed(int i, int turn, t_lem_in_ant *ptr1)
+{
+	if (i + 1 < turn && ptr1->next)
+		ft_putstr(" ");
+}
+
 int			find_and_print_solution(int ant_nb, t_lem_in_ant *ant)
 {
 	int				i;
@@ -50,7 +56,6 @@ int			find_and_print_solution(int ant_nb, t_lem_in_ant *ant)
 	t_lem_in_path	*ptr2;
 
 	turn = 0;
-	ft_putendl("");
 	while (ant_nb && ++turn && (i = -1))
 	{
 		ptr1 = ant;
@@ -61,8 +66,7 @@ int			find_and_print_solution(int ant_nb, t_lem_in_ant *ant)
 			find_best_way(&ptr1, &ptr2, best_way);
 			ptr1->position = ptr2->room;
 			print_ant_position(ptr1->name, ptr1->position->name);
-			if (i + 1 < turn && ptr1->next)
-				ft_putstr(" ");
+			put_space_if_needed(i, turn, ptr1);
 			if (ptr1->position->is_end && !ptr1->escaped && (ptr1->escaped = 1))
 				ant_nb--;
 			ptr1 = ptr1->next;
