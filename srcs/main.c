@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 10:59:01 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/23 14:57:58 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/23 18:24:35 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int	main(void)
 	ant = 0;
 	init_t_lem_in_var(&v);
 	if (!(file = stock_content()) ||
-		(!parse_content_light(&v, file) && (!estimate_if_doable(&v))) ||
+		!parse_content_light(&v, file) ||
+		!estimate_if_doable(&v) ||
 		!(room = format_content_into_lst(file)) ||
 		!parse_content_in_depth(room) ||
 		!apply_algorithm(room) ||
@@ -32,8 +33,8 @@ int	main(void)
 		return (handle_error(&file, &room, &ant));
 	ft_putendl("");
 	if (check_if_start_has_path_to_end(room))
-		get_ants_out_easy(ant, room);
-	else if (!(find_and_print_solution(v.ants_nb, ant)))
+		get_ants_out_easy(&v.ants_nb, ant, room);
+	if (!(find_and_print_solution(v.ants_nb, ant)))
 		return (handle_error(&file, &room, &ant));
 	free_all_struct(&file, &room, &ant);
 	return (0);

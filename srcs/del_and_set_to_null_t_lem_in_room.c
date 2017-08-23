@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/23 13:09:52 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/23 15:05:44 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/23 17:07:00 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,7 @@ void		del_and_set_to_null_t_lem_in_room(t_lem_in_room **room)
 		else if (!(*room)->prev && (*room)->next)
 			handle_null_prev_and_existing_next(room);
 		else
-		{
-			free(tmp);
 			*room = NULL;
-			return ;
-		}
 		free(tmp);
-		*room = (*room)->next;
 	}
 }

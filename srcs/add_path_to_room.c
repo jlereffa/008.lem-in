@@ -6,60 +6,72 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/20 15:02:19 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/23 14:32:05 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/23 17:13:12 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lem_in.h>
 
-static int	get_rooms_names(char *line, char **room_1_name, char **room_2_name)
+static int	free_no_matter_what_and_return_null(char **s1, char **s2)
+{
+	if (*s1)
+		free(*s1);
+	if (*s2)
+		free(*s2);
+	return (0);
+}
+
+static int	get_rooms_names(char *line, char **room1_name, char **room2_name)
 {
 	int	i;
 
 	i = 0;
 	while (line[i] != '-')
 		i++;
-	if (!(*room_1_name = (char*)malloc(sizeof(char) * i + 1)))
+	if (!(*room1_name = (char*)malloc(sizeof(char) * i + 1)))
 		return (print_error_msg(ER_MALLOC));
 	i = -1;
-	while (*line != '-' && (++i + 1) && ((*room_1_name)[i] = *line))
+	while (*line != '-' && (++i + 1) && ((*room1_name)[i] = *line))
 		line++;
-	(*room_1_name)[i + 1] = '\0';
+	(*room1_name)[i + 1] = '\0';
 	i = 0;
 	line++;
 	while (line[i])
 		i++;
-	if (!(*room_2_name = (char*)malloc(sizeof(char) * i + 1)))
+	if (!(*room2_name = (char*)malloc(sizeof(char) * i + 1)))
 		return (print_error_msg(ER_MALLOC));
 	i = -1;
-	while (*line && (++i + 1) && ((*room_2_name)[i] = *line))
+	while (*line && (++i + 1) && ((*room2_name)[i] = *line))
 		line++;
-	(*room_2_name)[i + 1] = '\0';
+	(*room2_name)[i + 1] = '\0';
 	return (1);
 }
 
 int			add_path_to_room(t_lem_in_room *room, char *line)
 {
-	char	*room_1_name;
-	char	*room_2_name;
+	char	*room1_name;
+	char	*room2_name;
 
-	if (!get_rooms_names(line, &room_1_name, &room_2_name))
+	room1_name = NULL;
+	room2_name = NULL;
+	if (!get_rooms_names(line, &room1_name, &room2_name))
 		return (0);
-	while (room->prev && !check_if_str_identical(room->name, room_1_name))
+	while (room->prev && !check_if_str_identical(room->name, room1_name))
 		room = room->prev;
-	while (room->next && !check_if_str_identical(room->name, room_1_name))
+	while (room->next && !check_if_str_identical(room->name, room1_name))
 		room = room->next;
-	if (!check_if_str_identical(room->name, room_1_name))
-		return (0);
-	if (!(room->path = set_t_lem_in_path(room, room->path, room_2_name)))
-		return (0);
-	while (room->prev && !check_if_str_identical(room->name, room_2_name))
+	if (!check_if_str_identical(room->name, room1_name))
+		return (free_no_matter_what_and_return_null(&room1_name, &room2_name));
+	if (!(room->path = set_t_lem_in_path(room, room->path, room2_name)))
+		return (free_no_matter_what_and_return_null(&room1_name, &room2_name));
+	while (room->prev && !check_if_str_identical(room->name, room2_name))
 		room = room->prev;
-	while (room->next && !check_if_str_identical(room->name, room_2_name))
+	while (room->next && !check_if_str_identical(room->name, room2_name))
 		room = room->next;
-	if (!check_if_str_identical(room->name, room_2_name))
-		return (0);
-	if (!(room->path = set_t_lem_in_path(room, room->path, room_1_name)))
-		return (0);
+	if (!check_if_str_identical(room->name, room2_name))
+		return (free_no_matter_what_and_return_null(&room1_name, &room2_name));
+	if (!(room->path = set_t_lem_in_path(room, room->path, room1_name)))
+		return (free_no_matter_what_and_return_null(&room1_name, &room2_name));
+	free_no_matter_what_and_return_null(&room1_name, &room2_name);
 	return (1);
 }

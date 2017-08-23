@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 11:15:41 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/23 13:24:06 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/23 17:24:56 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_lem_in_file	*stock_content(void)
 			!print_error_msg(ER_MALLOC))
 			return (0);
 	}
-	if ((ret == -1 || line_nb < 6) && !print_error_msg(ER_BAD_FILE))
+	if ((ret == -1) && !print_error_msg(ER_BAD_FILE))
 		return (0);
 	if (!rewind_t_lem_in_file(&file) && !print_error_msg(ER_BAD_FILE))
 		return (0);

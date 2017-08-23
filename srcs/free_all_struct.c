@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/23 12:51:24 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/23 15:05:58 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/23 17:13:53 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	free_all_struct(t_lem_in_file **file, t_lem_in_room **room,
 	rewind_t_lem_in_file(file);
 	rewind_t_lem_in_room(room);
 	rewind_t_lem_in_ant(ant);
-	if (file)
+	if (*file)
 		del_and_set_to_null_t_lem_in_file(file);
-	if (room)
+	if (*room)
 		del_and_set_to_null_t_lem_in_room(room);
-	if (ant)
+	if (*ant)
 		del_and_set_to_null_t_lem_in_ant(ant);
 }

@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/23 13:09:52 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/23 14:41:34 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/23 17:14:20 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	handle_null_prev_and_existing_next(t_lem_in_file **file)
 
 void		del_and_set_to_null_t_lem_in_file(t_lem_in_file **file)
 {
-	t_lem_in_file *tmp;
+	t_lem_in_file	*tmp;
 
 	while (*file)
 	{
@@ -46,12 +46,7 @@ void		del_and_set_to_null_t_lem_in_file(t_lem_in_file **file)
 		else if (!(*file)->prev && (*file)->next)
 			handle_null_prev_and_existing_next(file);
 		else
-		{
-			free(tmp);
 			*file = NULL;
-			return ;
-		}
 		free(tmp);
-		*file = (*file)->next;
 	}
 }

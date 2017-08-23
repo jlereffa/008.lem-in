@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 19:30:24 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/23 13:29:59 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/23 16:46:26 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,16 @@ static char		*get_ant_name(int nb)
 		!print_error_msg(ER_MALLOC))
 		return (0);
 	ptr = name;
-	len = 1;
+	len = 0;
 	name_final[0] = 'L';
-	while (*name)
+	while (*name && ++len)
 	{
 		name_final[len] = *name;
 		name++;
-		len++;
 	}
-	name_final[len] = '-';
-	name_final[len + 1] = '\0';
+	name_final[len + 1] = '-';
+	name_final[len + 2] = '\0';
+	free(ptr);
 	return (name_final);
 }
 

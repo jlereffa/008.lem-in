@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 10:52:52 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/23 14:31:46 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/23 18:23:58 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@
 # define ER_ANT "BAD ANT NUMBER"
 # define ER_BAD_FILE "BAD FILE"
 # define ER_DOUBLE_PATH "TWO OR MORE PATHS ARE THE SAME"
+# define ER_END_NOT_DEFINED "ENDING ROOM NOT DEFINED"
 # define ER_END_ROOM "MISSING ENDING ROOM"
+# define ER_HAS_NO_PATH "NO PATH DEFINED"
+# define ER_HAS_NO_ROOM "NO ROOM DEFINED"
 # define ER_MALLOC "MALLOC FAILED"
 # define ER_NOT_A_VALID_LINE "NOT A VALID LINE"
 # define ER_NOT_DOABLE "NOT DOABLE"
@@ -29,6 +32,7 @@
 # define ER_ROOM_SAME_NAME "TWO OR MORE ROOMS HAVE SAME NAME"
 # define ER_S1_OR_S2_POINTER_NULL "S1 OR S2 POINTER NULL"
 # define ER_START_END_NOT_CONNECTED "STARTING OR ENDING ROOM HAS NO PATH"
+# define ER_START_NOT_DEFINED "STARTING ROOM NOT DEFINED"
 # define ER_START_ROOM "MISSING STARTING ROOM"
 # define ER_START_NOT_FOUND "STARTING ROOM NOT FIND BY ALGORITHM"
 # define ER_WRONG_ROOM_NAMES "WRONG ROOM NAMES"
@@ -136,7 +140,7 @@ t_lem_in_room		*format_content_into_lst(t_lem_in_file *file);
 int					add_path_to_room(t_lem_in_room *room, char *line);
 int					apply_algorithm(t_lem_in_room *room);
 int					check_if_start_has_path_to_end(t_lem_in_room *room);
-void				get_ants_out_easy(t_lem_in_ant *ant,
+void				get_ants_out_easy(int *ant_nb, t_lem_in_ant *ant,
 					t_lem_in_room *room);
 int					find_and_print_solution(int ant_nb, t_lem_in_ant *ant);
 

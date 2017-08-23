@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/23 13:09:52 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/23 14:41:37 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/23 17:06:51 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,7 @@ void		del_and_set_to_null_t_lem_in_path(t_lem_in_path **path)
 		else if (!(*path)->prev && (*path)->next)
 			handle_null_prev_and_existing_next(path);
 		else
-		{
-			free(tmp);
 			*path = NULL;
-			return ;
-		}
 		free(tmp);
-		*path = (*path)->next;
 	}
 }
