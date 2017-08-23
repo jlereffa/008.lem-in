@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 10:52:52 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/23 18:23:58 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/23 18:54:37 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <libft.h>
 
 # define ER_ANT "BAD ANT NUMBER"
+# define ER_ANT_NB_TOO_BIG "ANT NUMBER TOO BIG"
 # define ER_BAD_FILE "BAD FILE"
 # define ER_DOUBLE_PATH "TWO OR MORE PATHS ARE THE SAME"
 # define ER_END_NOT_DEFINED "ENDING ROOM NOT DEFINED"
@@ -98,6 +99,7 @@ t_lem_in_file		*stock_content(void);
 */
 
 int					parse_content_light(t_lem_in_var *v, t_lem_in_file *file);
+intmax_t			ft_atointmax(const char *nptr);
 int					check_ants_nb(t_lem_in_var *v, char *s);
 int					check_commands_and_comments(
 					t_lem_in_var *v, t_lem_in_file **file);

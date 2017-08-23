@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 16:31:46 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/23 12:22:03 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/23 18:50:23 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	check_ants_nb(t_lem_in_var *v, char *s)
 {
-	char	*ptr;
-
+	char		*ptr;
+	intmax_t	tmp;
 	ptr = s;
 	if (!s || !*s)
 		return (0);
@@ -25,8 +25,9 @@ int	check_ants_nb(t_lem_in_var *v, char *s)
 			return (print_error_msg(ER_ANT));
 		ptr++;
 	}
-	if (!(v->ants_nb = ft_atoi(s)))
-		return (print_error_msg(ER_MALLOC));
+	if ((tmp = ft_atointmax(s)) > 2147483647)
+		return (print_error_msg(ER_ANT_NB_TOO_BIG));
+	v->ants_nb = tmp;
 	ft_putendl(s);
 	return (1);
 }
