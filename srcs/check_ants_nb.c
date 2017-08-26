@@ -6,7 +6,7 @@
 /*   By: jlereffa <jlereffa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 16:31:46 by jlereffa          #+#    #+#             */
-/*   Updated: 2017/08/23 18:50:23 by jlereffa         ###   ########.fr       */
+/*   Updated: 2017/08/26 12:50:25 by jlereffa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	check_ants_nb(t_lem_in_var *v, char *s)
 {
 	char		*ptr;
 	intmax_t	tmp;
+
 	ptr = s;
 	if (!s || !*s)
 		return (0);
